@@ -9,7 +9,7 @@ import addItemToCart from '../utils/addItemToCart';
 import addTwoItems from '../utils/addTwoItems';
 import '@testing-library/jest-dom';
 
-describe('Тесты корзины', () => {
+describe('Тесты страницы корзины', () => {
     it('Содержимое корзины должно сохраняться между перезагрузками', async () => {
         const { history } = renderApplication({ useMockCart: false });
         await addItemToCart({ id: detailedProduct1.id, history, count: 3 });

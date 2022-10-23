@@ -8,7 +8,7 @@ import { screen } from '@testing-library/react';
 import events from '../utils/events';
 import '@testing-library/jest-dom';
 
-describe('Тесты страницы с подробной информацией', () => {
+describe('Тесты страницы с подробной информацией о продукте', () => {
     describe('На странице с подробной информацией отображаются: название товара, его описание, цена, цвет, материал и кнопка "добавить в корзину"', () => {
         it('Товар #1', async () => {
             const { container, history } = renderApplication({ apiVar: 1 });

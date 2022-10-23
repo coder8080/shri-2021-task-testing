@@ -9,11 +9,11 @@ import { screen } from '@testing-library/react';
 import events from '../utils/events';
 import '@testing-library/jest-dom';
 
-describe('Тесты каталога', () => {
+describe('Тесты страницы каталога', () => {
     it('Страница каталога существует', async () => {
         const { container } = await openCatalogPage();
         const catalogPage = container.querySelector('.Catalog');
-        expect(catalogPage).toBeTruthy();
+        expect(catalogPage).toBeInTheDocument();
     });
 
     describe('Для каждого товара в каталоге отображается название, цена и ссылка, полученные с сервера', () => {
