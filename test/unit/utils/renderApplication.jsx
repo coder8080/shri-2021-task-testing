@@ -59,17 +59,19 @@ export const detailedProduct2 = {
     material: 'Soft',
 };
 
-class subApi {
-    constructor(stubProducts, detailedProduct) {
+class stubApi {
+    constructor(stubProducts) {
         this.stubProducts = stubProducts;
-        this.detailedProduct = detailedProduct;
     }
     async getProducts() {
         return { data: this.stubProducts };
     }
 
     async getProductById(id) {
-        return { data: this.detailedProduct };
+        return {
+            data:
+                id == detailedProduct1.id ? detailedProduct1 : detailedProduct2,
+        };
     }
 
     async checkout(form, cart) {
@@ -98,9 +100,9 @@ const renderApplication = ({ apiVar = 1, useMockCart = true } = {}) => {
     });
     let api = null;
     if (apiVar === 1) {
-        api = new subApi(stubProducts1, detailedProduct1);
+        api = new stubApi(stubProducts1);
     } else {
-        api = new subApi(stubProducts2, detailedProduct2);
+        api = new stubApi(stubProducts2);
     }
     const store = initStore(api, cart);
     const application = (

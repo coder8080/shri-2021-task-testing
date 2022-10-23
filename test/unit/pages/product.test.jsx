@@ -1,4 +1,5 @@
 import openPageAndWait from '../utils/openPageAndWait';
+import addItemToCart from '../utils/addItemToCart';
 import renderApplication, {
     detailedProduct1,
     detailedProduct2,
@@ -43,17 +44,33 @@ describe('Тесты страницы с подробной информацие
         await events.click(addToCart);
         expect(container).toHaveTextContent('Item in cart');
     });
-    it('Повторное нажатие кнопки "добавит в корзину" увеличивает количество товара', async () => {
-        const { store, history } = renderApplication();
-        history.push(`/catalog/${detailedProduct1.id}`);
-        await delay(100);
-        const addToCartButton = screen.getByText('Add to Cart');
-        await events.click(addToCartButton);
-        await events.click(addToCartButton);
-        await events.click(addToCartButton);
-        const state = store.getState();
-        const cartState = state.cart;
-        const count = cartState[String(detailedProduct1.id)]?.count;
-        expect(count).toBe(3);
+    describe('Кнопка "добавить в корзину"', () => {
+        it('Нажатие кнопки "добавить в корзину" добавляет товар в корзину', async () => {
+            const { store, history } = renderApplication();
+            await addItemToCart({ id: detailedProduct1.id, history, count: 1 });
+            const state = store.getState();
+            const cartState = state.cart;
+            const cartItems = Object.entries(cartState);
+            const cartItemId = cartItems[0][0];
+            const cartItem = cartItems[0][1];
+            expect(cartItemId).toBe(String(detailedProduct1.id));
+            expect(cartItem.name).toBe(detailedProduct1.name);
+            expect(cartItem.count).toBe(1);
+            expect(cartItem.price).toBe(detailedProduct1.price);
+            expect(cartItems.length).toBe(1);
+        });
+        it('Повторное нажатие кнопки "добавить в корзину" увеличивает количество товара', async () => {
+            const { store, history } = renderApplication();
+            history.push(`/catalog/${detailedProduct1.id}`);
+            await delay(100);
+            const addToCartButton = screen.getByText('Add to Cart');
+            await events.click(addToCartButton);
+            await events.click(addToCartButton);
+            await events.click(addToCartButton);
+            const state = store.getState();
+            const cartState = state.cart;
+            const count = cartState[String(detailedProduct1.id)]?.count;
+            expect(count).toBe(3);
+        });
     });
 });

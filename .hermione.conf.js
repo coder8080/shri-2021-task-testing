@@ -1,6 +1,6 @@
 module.exports = {
     gridUrl: 'http://127.0.0.1:4444/wd/hub',
-    baseUrl: 'http://127.0.0.1:3000/hw/store',
+    baseUrl: 'https://shri.yandex/hw/store',
     sets: {
         mobile: {
             files: './test/hermione/mobile',
