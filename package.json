@@ -3,12 +3,13 @@
     "version": "1.0.0",
     "scripts": {
         "start": "nodemon ./src/server/index.ts",
-        "test": "npm run test-unit && npm run build && concurrently \"npm run start\"  \"npm run test-hermione\"",
+        "test": "npm run test-unit && npm run build > unified.log && concurrently \"npm run start --quiet\"  \"npm run test-hermione\"",
         "build": "webpack --mode=production --node-env=production",
         "hermione-gui": "hermione gui ./test/hermione",
-        "test-hermione": "selenium-standalone install && hermione",
+        "test-hermione": "selenium-standalone install > unified.log && hermione",
         "test-unit": "NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest",
-        "watch": "webpack --watch"
+        "watch": "webpack --watch",
+        "postinstall": "npm link hermione-selenium-standalone-runner"
     },
     "dependencies": {
         "@babel/core": "^7.19.6",
