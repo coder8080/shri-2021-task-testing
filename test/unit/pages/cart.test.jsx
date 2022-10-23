@@ -53,7 +53,7 @@ describe('Тесты страницы корзины', () => {
         expect(orderPrice).toHaveTextContent('$1789');
     });
     it('Присутствует кнопка "очистить корзину"', async () => {
-        const { container, history } = renderApplication();
+        const { history } = renderApplication();
         await addTwoItems({ history });
         history.push('/cart');
         const clearCartButton = screen.getByText('Clear shopping cart');
