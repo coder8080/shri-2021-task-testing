@@ -4,7 +4,7 @@ import delay from 'delay';
 const openPageAndWait = async (address, ...args) => {
     const params = renderApplication(...args);
     params.history.push(address);
-    await delay(200);
+    await delay(50);
     return params;
 };
 

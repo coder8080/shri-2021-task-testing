@@ -18,7 +18,6 @@ module.exports = (hermione) => {
 
     hermione.on(hermione.events.RUNNER_END, () => {
         return new Promise(async (resolve) => {
-            await delay(1000);
             selenium.on('exit', resolve);
             selenium.kill();
         });

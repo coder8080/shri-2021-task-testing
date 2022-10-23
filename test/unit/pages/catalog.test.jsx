@@ -54,11 +54,11 @@ describe('Тесты каталога', () => {
     it('Если товар уже добавлен в корзину, в каталоге должно отображаться сообщение об этом', async () => {
         const { history } = renderApplication({ apiVar: 1 });
         history.push(`/catalog/${detailedProduct1.id}`);
-        await delay(100);
+        await delay(50);
         const addToCartButton = screen.getByText('Add to Cart');
         await events.click(addToCartButton);
         history.push('/catalog');
-        await delay(100);
+        await delay(50);
         const card = screen.getAllByTestId(String(detailedProduct1.id))[0];
         expect(card).toHaveTextContent('Item in cart');
     });

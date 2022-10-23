@@ -62,7 +62,7 @@ describe('Тесты страницы с подробной информацие
         it('Повторное нажатие кнопки "добавить в корзину" увеличивает количество товара', async () => {
             const { store, history } = renderApplication();
             history.push(`/catalog/${detailedProduct1.id}`);
-            await delay(100);
+            await delay(50);
             const addToCartButton = screen.getByText('Add to Cart');
             await events.click(addToCartButton);
             await events.click(addToCartButton);
