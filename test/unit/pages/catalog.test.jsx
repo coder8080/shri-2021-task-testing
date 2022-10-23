@@ -1,5 +1,5 @@
 import renderApplication from '../utils/renderApplication';
-import { openCatalogPage } from '../utils/openPageAndWait';
+import openPageAndWait, { openCatalogPage } from '../utils/openPageAndWait';
 import {
     stubProducts1,
     stubProducts2,
@@ -8,7 +8,6 @@ import {
 import { screen } from '@testing-library/react';
 import events from '../utils/events';
 import '@testing-library/jest-dom';
-import delay from 'delay';
 
 describe('Тесты каталога', () => {
     it('Страница каталога существует', async () => {
@@ -53,12 +52,16 @@ describe('Тесты каталога', () => {
 
     it('Если товар уже добавлен в корзину, в каталоге должно отображаться сообщение об этом', async () => {
         const { history } = renderApplication({ apiVar: 1 });
-        history.push(`/catalog/${detailedProduct1.id}`);
-        await delay(50);
+        await openPageAndWait({
+            history,
+            address: `/catalog/${detailedProduct1.id}`,
+        });
         const addToCartButton = screen.getByText('Add to Cart');
         await events.click(addToCartButton);
-        history.push('/catalog');
-        await delay(50);
+        await openPageAndWait({
+            history,
+            address: '/catalog',
+        });
         const card = screen.getAllByTestId(String(detailedProduct1.id))[0];
         expect(card).toHaveTextContent('Item in cart');
     });

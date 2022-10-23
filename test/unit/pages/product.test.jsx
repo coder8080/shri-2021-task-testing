@@ -7,15 +7,15 @@ import renderApplication, {
 import { screen } from '@testing-library/react';
 import events from '../utils/events';
 import '@testing-library/jest-dom';
-import delay from 'delay';
 
 describe('Тесты страницы с подробной информацией', () => {
     describe('На странице с подробной информацией отображаются: название товара, его описание, цена, цвет, материал и кнопка "добавить в корзину"', () => {
         it('Товар #1', async () => {
-            const { container } = await openPageAndWait(
-                `/catalog/${detailedProduct1.id}`,
-                { apiVar: 1 }
-            );
+            const { container, history } = renderApplication({ apiVar: 1 });
+            await openPageAndWait({
+                history,
+                address: `/catalog/${detailedProduct1.id}`,
+            });
             expect(container).toHaveTextContent(detailedProduct1.name);
             expect(container).toHaveTextContent(detailedProduct1.description);
             expect(container).toHaveTextContent(detailedProduct1.price);
@@ -24,10 +24,11 @@ describe('Тесты страницы с подробной информацие
             expect(container).not.toHaveTextContent('Item in cart');
         });
         it('Товар #2', async () => {
-            const { container } = await openPageAndWait(
-                `/catalog/${detailedProduct2.id}`,
-                { apiVar: 2 }
-            );
+            const { container, history } = renderApplication({ apiVar: 2 });
+            await openPageAndWait({
+                history,
+                address: `/catalog/${detailedProduct2.id}`,
+            });
             expect(container).toHaveTextContent(detailedProduct2.name);
             expect(container).toHaveTextContent(detailedProduct2.description);
             expect(container).toHaveTextContent(detailedProduct2.price);
@@ -37,9 +38,11 @@ describe('Тесты страницы с подробной информацие
         });
     });
     it('Если товар уже добавлен в корзину, то на странице товара должно отображаться сообщение об этом', async () => {
-        const { container } = await openPageAndWait(
-            `/catalog/${detailedProduct1.id}`
-        );
+        const { container, history } = renderApplication();
+        await openPageAndWait({
+            history,
+            address: `/catalog/${detailedProduct1.id}`,
+        });
         const addToCart = screen.getByText('Add to Cart');
         await events.click(addToCart);
         expect(container).toHaveTextContent('Item in cart');
@@ -61,8 +64,10 @@ describe('Тесты страницы с подробной информацие
         });
         it('Повторное нажатие кнопки "добавить в корзину" увеличивает количество товара', async () => {
             const { store, history } = renderApplication();
-            history.push(`/catalog/${detailedProduct1.id}`);
-            await delay(50);
+            await openPageAndWait({
+                history,
+                address: `/catalog/${detailedProduct1.id}`,
+            });
             const addToCartButton = screen.getByText('Add to Cart');
             await events.click(addToCartButton);
             await events.click(addToCartButton);

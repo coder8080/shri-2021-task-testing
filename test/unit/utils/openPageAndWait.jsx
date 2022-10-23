@@ -1,14 +1,23 @@
 import renderApplication from './renderApplication';
-import delay from 'delay';
+import { screen, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
-const openPageAndWait = async (address, ...args) => {
-    const params = renderApplication(...args);
-    params.history.push(address);
-    await delay(50);
-    return params;
+const openPageAndWait = async ({ history, address }) => {
+    history.push(address);
+    await waitFor(() => {
+        try {
+            const loading = screen.getByText('LOADING');
+            return false;
+        } catch (e) {
+            return true;
+        }
+    });
 };
 
-export const openCatalogPage = (...args) =>
-    openPageAndWait('/catalog', ...args);
+export const openCatalogPage = async (...args) => {
+    const params = renderApplication(...args);
+    await openPageAndWait({ address: '/catalog', history: params.history });
+    return params;
+};
 
 export default openPageAndWait;
