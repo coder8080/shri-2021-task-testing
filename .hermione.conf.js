@@ -23,5 +23,8 @@ module.exports = {
             desiredCapabilities: { browserName: 'chrome' },
         },
     },
-    plugins: { 'html-reporter/hermione': { path: 'hermone-html-report' } },
+    plugins: {
+        'html-reporter/hermione': { path: 'hermone-html-report' },
+        'hermione-selenium-standalone-runner': true,
+    },
 };

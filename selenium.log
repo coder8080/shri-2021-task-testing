@@ -1,0 +1,30 @@
+11:24:43.765 INFO [LoggingOptions.configureLogEncoding] - Using the system default encoding
+11:24:43.771 INFO [OpenTelemetryTracer.createTracer] - Using OpenTelemetry for tracing
+11:24:44.325 INFO [NodeOptions.getSessionFactories] - Detected 8 available processors
+11:24:44.351 INFO [NodeOptions.discoverDrivers] - Discovered 3 driver(s)
+11:24:44.375 INFO [NodeOptions.report] - Adding Chrome for {"browserName": "chrome"} 8 times
+11:24:44.376 INFO [NodeOptions.report] - Adding Edge for {"browserName": "MicrosoftEdge"} 8 times
+11:24:44.377 INFO [NodeOptions.report] - Adding Firefox for {"browserName": "firefox"} 8 times
+11:24:44.416 INFO [Node.<init>] - Binding additional locator mechanisms: relative, id, name
+11:24:44.438 INFO [LocalDistributor.add] - Added node bb21fa49-51a4-4bba-b894-8550bd863a97 at http://172.17.0.1:4444. Health check every 120s
+11:24:44.439 INFO [GridModel.setAvailability] - Switching node bb21fa49-51a4-4bba-b894-8550bd863a97 (uri: http://172.17.0.1:4444) from DOWN to UP
+11:24:44.548 INFO [Standalone.execute] - Started Selenium Standalone 4.0.0 (revision 3a21814679): http://172.17.0.1:4444
+Selenium started
+11:24:49.027 INFO [LocalDistributor.newSession] - Session request received by the distributor: 
+ [Capabilities {browserName: chrome}]
+11:24:49.027 INFO [LocalDistributor.newSession] - Session request received by the distributor: 
+ [Capabilities {browserName: chrome}]
+Starting ChromeDriver 106.0.5249.61 (511755355844955cd3e264779baf0dd38212a4d0-refs/branch-heads/5249@{#569}) on port 40118
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+Starting CChhrroommeeDDrriivveerr  w1a0s6 .s0t.a5r2t4e9d. 6s1u c(c5e1ssf1ully.
+755355844955cd3e264779baf0dd38212a4d0-refs/branch-heads/5249@{#569}) on port 39604
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+11:24:49.607 INFO [ProtocolHandshake.createSession] - Detected dialect: W3C
+11:24:49.612 INFO [ProtocolHandshake.createSession] - Detected dialect: W3C
+11:24:49.641 INFO [LocalDistributor.newSession] - Session created by the distributor. Id: 6465ad49694ecdbcfd6dbb3b0c5fb01c, Caps: Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 106.0.5249.103, chrome: {chromedriverVersion: 106.0.5249.61 (511755355844..., userDataDir: /tmp/.com.google.Chrome.3EjAMY}, goog:chromeOptions: {debuggerAddress: localhost:44211}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://172.17.0.1:4444/sessio..., se:cdpVersion: 106.0.5249.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+11:24:49.641 INFO [LocalDistributor.newSession] - Session created by the distributor. Id: 28c30d72988fe68d708145f3b8e3d397, Caps: Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 106.0.5249.103, chrome: {chromedriverVersion: 106.0.5249.61 (511755355844..., userDataDir: /tmp/.com.google.Chrome.EVIXdQ}, goog:chromeOptions: {debuggerAddress: localhost:34897}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://172.17.0.1:4444/sessio..., se:cdpVersion: 106.0.5249.103, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+11:24:52.403 INFO [LocalSessionMap.lambda$new$0] - Deleted session from local session map, Id: 6465ad49694ecdbcfd6dbb3b0c5fb01c
+11:24:53.358 INFO [LocalSessionMap.lambda$new$0] - Deleted session from local session map, Id: 28c30d72988fe68d708145f3b8e3d397
